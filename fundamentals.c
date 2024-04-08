@@ -6,6 +6,7 @@
 
 void fundamentals(void) {
 /* Version 1 */
+	/*
 	printf("*** Start of Indexing Strings Demo ***\n");
 	char		buffer1[BUFFER_SIZE];
 	char		numInput[NUM_INPUT_SIZE];
@@ -29,8 +30,22 @@ void fundamentals(void) {
 		}
 	} while (strcmp(buffer1, "q") != 0);
 	printf("*** End of Indexing Strings Demo ***\n\n");
-
+	*/
 /* Version 2 */
+	printf("*** Start of Measuring Strings Demo ***\n");
+	char		buffer2[BUFFER_SIZE];
+	do{
+		printf("Type not empty string (q - to quit):\n");
+		fgets(buffer2, BUFFER_SIZE, stdin);
+		buffer2[strlen(buffer2) - 1] = '\0';
+		if (strcmp(buffer2, "q") != 0) {
+			printf("The length of \'%s\' is %d characters \n",
+				 buffer2, (int)strlen(buffer2));		
+		}
+	} while (strcmp(buffer2, "q") != 0);
+	printf("*** End of Measuring Strings Demo ***\n\n");
+
+
 // insert here
 
 

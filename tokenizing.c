@@ -6,6 +6,7 @@
 void tokenizing(void) {
 /* Version 1 */
 // insert here
+/*
 	char words[BUFFER_SIZE];
 	char* nextWord = NULL;
 	int wordsCounter;
@@ -25,10 +26,29 @@ void tokenizing(void) {
 		}
 	} while (strcmp(words, "q") != 0);
 	printf("*** End of Tokenizing Words Demo ***\n\n");
-
+*/
 /* Version 2 */
 // insert here
+	printf("*** Start of Tokenizing Phrases Demo ***\n");
+	char		phrases[BUFFER_SIZE] ;
+	char* nextPhrase = NULL;
+	int	phrasesCounter;
 
+	do {
+		printf("Type a few phrases separated by comma(q - to quit):\n");
+		fgets(phrases, BUFFER_SIZE, stdin);
+		phrases[strlen(phrases) - 1] = '\0';
+		if (strcmp(phrases, "q") != 0) {
+			nextPhrase = strtok(phrases, ",");
+			phrasesCounter = 1;
+			while (nextPhrase) {
+				printf("Pharse %d is	\'%s\'\n", phrasesCounter++, nextPhrase);
+				nextPhrase = strtok(NULL, ",");
+			}
+		}
+
+	} while (strcmp(phrases, "q") != 0);
+	printf("*** End of Tokenizing Phrases Demo ***\n\n");
 
 /* Version 3 */
 // insert here
