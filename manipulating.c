@@ -1,4 +1,4 @@
-// MANIPULATING MODULE SOURCE
+﻿// MANIPULATING MODULE SOURCE
 #define _CRT_SECURE_NO_WARNINGS
 #define BUFFER_SIZE 80
 #include"manipulating.h"
@@ -26,8 +26,8 @@ void manipulating(void) {
 }
 */
 
-/* Version 2 */
-//>> insert here
+/* Version 1 */
+/*
 void manipulating(void) {
 	char compare1[BUFFER_SIZE];
 	char compare2[BUFFER_SIZE];
@@ -53,10 +53,29 @@ void manipulating(void) {
 	} while (strcmp(compare1, "q") != 0);
 	printf("*** End of Comparing Strings Demo ***\n\n");
 }
-
-
+ฝ๕
 /* Version 3 */
 //>> insert here
-
-
-
+void manipulating(void) {
+	printf("*** Start of Searching Strings Demo ***\n");
+	char		haystack[BUFFER_SIZE];
+	char		needle[BUFFER_SIZE];
+	char*	occurrence = NULL;
+	do {
+		printf("Type the 1st string to compare (type 'q' to quit): \n");
+		fgets(haystack, BUFFER_SIZE, stdin);
+		haystack[strlen(haystack) - 1] = '\0';
+		if ((strcmp(haystack, "q") != 0)) {
+			printf("Type the substring:\n");
+			fgets(needle, BUFFER_SIZE, stdin);
+			needle[strlen(needle) - 1] = '\0';
+			occurrence = strstr(haystack, needle);
+			if (occurrence)
+				printf("\'%s\' found at %d position\n", needle, 
+					     (int)(occurrence - haystack));
+			else
+				printf("Not found\n");
+		}
+	} while (strcmp(haystack, "q") != 0);
+	printf("*** End of Searching Strings Demo ***\n\n");
+}

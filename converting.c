@@ -23,6 +23,7 @@ void converting(void) {
 	*/
 /* Version 2 */
 // insert here
+	/*
 	printf("*** Start of Converting Strings to double Demo ***\n");
 	char doubleString[BUFFER_SIZE];
 	double doubleNumber;
@@ -36,9 +37,20 @@ void converting(void) {
 		}
 	} while (strcmp(doubleString, "q") != 0);
 	printf("*** End of Converting Strings to double Demo ***\n\n");
-
+	*/
 /* Version 3 */
 // insert here
-
-
+	printf("*** Start of Converting Strings to long Demo ***\n");
+	char longString[BUFFER_SIZE];
+	long longNumber;
+	do {
+		printf("Type the long numeric string (q - to quit):\n");
+		fgets(longString, BUFFER_SIZE, stdin);
+		longString[strlen(longString) - 1] = '\0';
+		if (strcmp(longString, "q") != 0) {
+			longNumber = atol(longString);
+			printf("Converted number is %ld\n", longNumber);
+		}
+	}while(strcmp(longString, "q") != 0);
+	printf("*** End of Converting Strings to long Demo ***\n\n");
 }
