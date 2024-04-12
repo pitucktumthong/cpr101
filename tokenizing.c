@@ -1,6 +1,6 @@
 // TOKENIZING MODULE SOURCE
 #define _CRT_SECURE_NO_WARNINGS
-#define BUFFER_SIZE		300
+#define BUFFER_SIZE		1000
 #include "tokenizing.h"
 
 void tokenizing(void) {
@@ -52,23 +52,30 @@ void tokenizing(void) {
 	*/
 /* Version 3 */
 // insert here
-	printf("*** Start of Tokenizing Sentences Demo ***\n");
-	char		sentences[BUFFER_SIZE];
-	char*	nextSentence = NULL;
-	int		sentencesCounter;
-	do {
-		printf("Type a few sentences separated by dot(q - to quit):\n");
-		fgets(sentences, BUFFER_SIZE, stdin);
-		sentences[strlen(sentences) - 1] = '\0';
-		if (strcmp(sentences, "q") != 0) {
-			nextSentence = strtok(sentences, ".");
-			sentencesCounter = 1;
-			while (nextSentence) {
-				printf("Sentence #%d is	\'%s\'\n", sentencesCounter++, nextSentence);
-				nextSentence = strtok(NULL, ".");
-			}
-		}	
-	} while (strcmp(sentences, "q") != 0);
-	printf("*** End of Tokenizing Sentences Demo ***\n\n");
+    printf("*** Tokenizing Strings ***\n");
 
+    char string[BUFFER_SIZE];
+    char *token;
+    int sentenceCounter = 1;
+
+    while (sentenceCounter == 1) {
+        printf("Type a sentence (type '.' to end or 'q' to quit): ");
+        fgets(string, BUFFER_SIZE, stdin);
+
+        // Remove newline character
+        string[strcspn(string, "\n")] = '\0';
+
+        if (strcmp(string, "q") == 0) {
+            printf("Exiting...\n");
+            break;
+        }
+
+        token = strtok(string, ".");
+        while (token != NULL) {
+            printf("Sentence #%d is '%s'\n", sentenceCounter++, token);
+            token = strtok(NULL, ".");
+        }
+    }
+
+    printf("*** End ***\n\n");
 }

@@ -1,6 +1,7 @@
 ﻿// MANIPULATING MODULE SOURCE
 #define _CRT_SECURE_NO_WARNINGS
-#define BUFFER_SIZE 80
+#define MAX_LENGTH 100
+
 #include"manipulating.h"
 
 /* Version 1 */
@@ -53,29 +54,42 @@ void manipulating(void) {
 	} while (strcmp(compare1, "q") != 0);
 	printf("*** End of Comparing Strings Demo ***\n\n");
 }
-ฝ๕
+
 /* Version 3 */
 //>> insert here
+void clearInputBuffer(void)
+{
+    // Discard all remaining char's from the standard input buffer:
+    while (getchar() != '\n')
+    {
+        ; // do nothing!
+    }
+}
+
 void manipulating(void) {
-	printf("*** Start of Searching Strings Demo ***\n");
-	char		haystack[BUFFER_SIZE];
-	char		needle[BUFFER_SIZE];
-	char*	occurrence = NULL;
-	do {
-		printf("Type the 1st string to compare (type 'q' to quit): \n");
-		fgets(haystack, BUFFER_SIZE, stdin);
-		haystack[strlen(haystack) - 1] = '\0';
-		if ((strcmp(haystack, "q") != 0)) {
-			printf("Type the substring:\n");
-			fgets(needle, BUFFER_SIZE, stdin);
-			needle[strlen(needle) - 1] = '\0';
-			occurrence = strstr(haystack, needle);
-			if (occurrence)
-				printf("\'%s\' found at %d position\n", needle, 
-					     (int)(occurrence - haystack));
-			else
-				printf("Not found\n");
-		}
-	} while (strcmp(haystack, "q") != 0);
-	printf("*** End of Searching Strings Demo ***\n\n");
+    char string1[MAX_LENGTH];
+    char string2[MAX_LENGTH];
+    char *found;
+
+    printf("=== String Searching ===\n");
+    do {
+        printf("Enter the first string (type 'q' to quit): ");
+        scanf("%[^\n]", string1);
+        clearInputBuffer(); //clear buffer
+        if (strcmp(string1, "q") != 0) {
+            printf("Enter the substring: ");
+            scanf("%[^\n]", string2);
+            clearInputBuffer(); //clear buffer
+
+            // Search for string2 in string1
+            found = strstr(string1, string2);
+            if (found) {
+                printf("'%s' found at position %ld\n", string2, found - string1 + 1);
+            } else {
+                printf("'%s' not found in the string\n", string2);
+            }
+        }
+    } while (strcmp(string1, "q") != 0);
+
+    printf("Exiting...\n");
 }

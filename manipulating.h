@@ -12,5 +12,6 @@
 #include <string.h>
 
 //function definition
+void clearInputBuffer(void);
 void manipulating(void);
 #endif
